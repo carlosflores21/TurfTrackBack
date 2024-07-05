@@ -1,0 +1,20 @@
+services:
+  internado_api:
+    build:
+      context: ./internado_api
+      dockerfile: Dockerfile
+    #image: nodejs
+    container_name: internado_api
+    restart: unless-stopped
+    ports:
+      - "80:8080"
+
+  usuarios_api:
+    build:
+      context: ./usuarios_api
+      dockerfile: Dockerfile
+    #image: nodejs
+    container_name: usuarios_api
+    restart: unless-stopped
+    ports:
+      - "81:8080"

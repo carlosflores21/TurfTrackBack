@@ -1,0 +1,12 @@
+@startuml Ecommerce
+
+
+package "Internado API" {
+
+    [Postman] -down-> [Internado]
+    [Internado] -right-> [DB Internado]
+    [Internado] -down-> [Usuarios]
+    [Usuarios] -right-> [DB Usuarios]
+}
+
+@enduml

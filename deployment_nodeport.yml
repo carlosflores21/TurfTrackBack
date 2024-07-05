@@ -1,0 +1,76 @@
+# Service and Deployment for internado_api
+apiVersion: v1
+kind: Service
+metadata:
+  name: internado-api-service
+spec:
+  type: NodePort
+  selector:
+    app: internado-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      nodePort: 30072
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: internado-api-deployment
+  labels:
+    app: internado-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: internado-api
+  template:
+    metadata:
+      labels:
+        app: internado-api
+    spec:
+      containers:
+        - name: internado-api-container
+          image: "905418128847.dkr.ecr.us-east-2.amazonaws.com/internado_api:internado_api"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+
+# Service and Deployment for usuarios_api
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: usuarios-api-service
+spec:
+  type: NodePort
+  selector:
+    app: usuarios-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      nodePort: 30073
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: usuarios-api-deployment
+  labels:
+    app: usuarios-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: usuarios-api
+  template:
+    metadata:
+      labels:
+        app: usuarios-api
+    spec:
+      containers:
+        - name: usuarios-api-container
+          image: "905418128847.dkr.ecr.us-east-2.amazonaws.com/internado_api:usuarios_api"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
