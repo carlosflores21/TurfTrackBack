@@ -1,6 +1,9 @@
+// Importamos mongoose para manejar la base de datos MongoDB
 const mongoose = require('mongoose');
 const { usuarioSchema } = require('./schemas');
 
-const usuarioModel = mongoose.model('usuario', usuarioSchema);
+// Creamos el modelo de usuario utilizando el esquema definido
+const usuarioModel = mongoose.model('Usuario', usuarioSchema);
 
-module.exports = {usuarioModel};
+// Exportamos el modelo de usuario para que pueda ser utilizado en otros archivos
+module.exports = { usuarioModel };
