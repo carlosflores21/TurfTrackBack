@@ -1,18 +1,26 @@
 const mongoose = require('mongoose');
 const internadoSchema = new mongoose.Schema({
-  nombreInternado: {
-    type: String,
-    required: true
-  },
-  numeroHabitacion: {
-    type: String,
-    required: true
-  },
-  capacidadHabitacion: {
+  id_Usuario: {
     type: Number,
     required: true
   },
-  codeStudent:{
+  id_cancha: {
+    type: String,
+    required: true
+  },
+  fecha: {
+    type: Date,
+    required: true
+  },
+  hora_inicio:{
+    type: String,
+    required: true
+  },
+  hora_fin:{
+    type: String,
+    required: true
+  },
+  status: {
     type: String,
     required: true
   },
