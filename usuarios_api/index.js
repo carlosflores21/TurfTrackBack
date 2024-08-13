@@ -54,17 +54,6 @@ app.post('/usuarios', async (req, res) => {
     const usuarioData = { id_usuario, nombre, email, telefono, contrasena };
 
     const usuario = await saveUsuario(usuarioData);
-<<<<<<< HEAD
-
-    // Enviar los datos del usuario al servicio de reservas
-    try {
-      await sendUsuarioToReservaService(usuario);
-    } catch (error) {
-      console.error(error);
-    }
-
-=======
->>>>>>> b3a0c4795a63af82200c7e686df73b8d2f4b1b6c
     return res.status(201).json(usuario);
   } catch (error) {
     console.error('Error', error);
@@ -72,10 +61,7 @@ app.post('/usuarios', async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-=======
 // Ruta para enviar los datos de un usuario al servicio de reservas cuando se solicite
->>>>>>> b3a0c4795a63af82200c7e686df73b8d2f4b1b6c
 app.post('/send-user/:id', async (req, res) => {
   try {
     const usuario = await getUsuarioById(req.params.id);
