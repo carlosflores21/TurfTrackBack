@@ -1,6 +1,6 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
-const { usuarioModel } = require("./usuarios_api/models");
+const axios = require("axios"); // Usar axios para hacer solicitudes HTTP
 
 const app = express();
 const port = 8080;
@@ -10,7 +10,6 @@ const secretKey = "jsonwebtokens";
 
 app.use(express.json());
 
-// Ruta de login usando email y contraseña
 app.post("/login", async (req, res) => {
   try {
     const { email, contrasena } = req.body;
@@ -19,11 +18,15 @@ app.post("/login", async (req, res) => {
       return res.status(400).json({ message: "Email and password are required" });
     }
 
-    // Buscar el usuario por email
-    const user = await usuarioModel.findOne({ email });
+    // Hacer una solicitud HTTP al servicio usuarios_api para obtener todos los usuarios
+    const response = await axios.get(`http://usuarios_api:8080/usuarios`);
+    const users = response.data;
 
+    // Filtrar el usuario que coincide con el email
+    const user = users.find(u => u.email === email);
+
+    // Verifica que el usuario exista y que la contraseña coincida
     if (user && user.contrasena === contrasena) {
-      // Crear el token JWT
       const token = jwt.sign({ id_usuario: user.id_usuario, email: user.email }, secretKey, { expiresIn: "1h" });
       return res.status(200).json({ token });
     } else {
