@@ -1,6 +1,6 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
-const { usuarioModel } = require("./usuarios_api/models");
+const { usuarioModel } = require("../usuarios_api/models");
 
 const app = express();
 const port = 8080;
