@@ -1,4 +1,6 @@
 const axios = require("axios");
+const { usuarioModel } = require('../models');
+const { adminModel } = require('../models');
 
 module.exports = {
     // Obtener la información de un usuario por su id
@@ -53,5 +55,15 @@ module.exports = {
             console.error(`Error al eliminar usuario con id ${id_usuario}:`, error);
             throw error;
         }
-    }
+    },
+
+    saveAdmin: async function(adminData) {
+        try {
+            const admin = new adminModel(adminData);
+            return await admin.save();
+        } catch (error) {
+            console.error('Error al guardar el admin:', error);
+            throw error;
+        }
+      }
 };

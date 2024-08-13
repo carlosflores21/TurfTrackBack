@@ -12,7 +12,7 @@ const adminSchema = new mongoose.Schema({
       type: String,
       required: true
     },
-    id_usuario: {
+    telefono: {
       type: String,
       required: true
     },
@@ -22,11 +22,13 @@ const adminSchema = new mongoose.Schema({
     },
     rol: {
       type: String,
-      required: true
+      required: true,
+      default: 'admin'
     },
     createdAt: {
       type: Date,
       default: Date.now
     }
   });
-  module.exports = {adminSchema}
+
+module.exports = {adminSchema};
