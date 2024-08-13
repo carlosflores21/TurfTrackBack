@@ -18,6 +18,7 @@ services:
     restart: unless-stopped
     ports:
       - "82:8080"
+      
   admin_api:
     build:
       context: ./admin_api

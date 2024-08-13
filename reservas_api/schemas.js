@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const internadoSchema = new mongoose.Schema({
+const reservaschema = new mongoose.Schema({
   id_Usuario: {
     type: Number,
     required: true
@@ -29,4 +29,4 @@ const internadoSchema = new mongoose.Schema({
     default: Date.now
   }
   });
-  module.exports = {internadoSchema}
+  module.exports = {reservaschema}
