@@ -28,11 +28,7 @@ app.post('/admin', async (req, res) => {
   try {
     const { id_admin, nombre, email, telefono, contrasena, rol } = req.body;
     const adminData = { id_admin, nombre, email, telefono, contrasena, rol };
-
-    const Admin = mongoose.model('Admin', adminSchema);
-    const admin = new Admin(adminData);
-    await admin.save();
-
+    const admin = await saveAdmin(adminData);
     return res.status(201).json(admin);
   } catch (error) {
     console.error('Error', error);
