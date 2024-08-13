@@ -1,13 +1,13 @@
 services:
-  internado_api:
+  reservas_api:
     build:
-      context: ./internado_api
+      context: ./reservas_api
       dockerfile: Dockerfile
     #image: nodejs
-    container_name: internado_api
+    container_name: reservas_api
     restart: unless-stopped
     ports:
-      - "80:8080"
+      - "81:8080"
 
   usuarios_api:
     build:
@@ -17,4 +17,13 @@ services:
     container_name: usuarios_api
     restart: unless-stopped
     ports:
-      - "81:8080"
+      - "82:8080"
+  admin_api:
+    build:
+      context: ./admin_api
+      dockerfile: Dockerfile
+    #image: nodejs
+    container_name: admin_api
+    restart: unless-stopped
+    ports:
+      - "83:8080"
