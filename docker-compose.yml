@@ -28,3 +28,13 @@ services:
     restart: unless-stopped
     ports:
       - "83:8080"
+
+  autentication:
+    build:
+      context: ./autentication
+      dockerfile: Dockerfile
+    #image: nodejs
+    container_name: autentication
+    restart: unless-stopped
+    ports:
+      - "84:8080"
