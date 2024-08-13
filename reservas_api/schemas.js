@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const reservaschema = new mongoose.Schema({
+const reservasSchema = new mongoose.Schema({
   id_Usuario: {
     type: Number,
     required: true
@@ -29,4 +29,4 @@ const reservaschema = new mongoose.Schema({
     default: Date.now
   }
   });
-  module.exports = {reservaschema}
+  module.exports = {reservasSchema}
