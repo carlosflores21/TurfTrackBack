@@ -26,8 +26,8 @@ app.get('/admin', async(req, res)=>{
 
 app.post('/admin', async (req, res) => {
   try {
-    const { id_admin, nombre, email, id_usuario, contrasena, rol } = req.body;
-    const adminData = { id_admin, nombre, email, id_usuario, contrasena, rol };
+    const { id_admin, nombre, email, telefono, contrasena, rol } = req.body;
+    const adminData = { id_admin, nombre, email, telefono, contrasena, rol };
 
     const Admin = mongoose.model('Admin', adminSchema);
     const admin = new Admin(adminData);

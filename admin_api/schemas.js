@@ -12,7 +12,7 @@ const adminSchema = new mongoose.Schema({
       type: String,
       required: true
     },
-    id_usuario: {
+    telefono: {
       type: String,
       required: true
     },
