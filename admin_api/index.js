@@ -24,6 +24,23 @@ app.get('/admin', async(req, res)=>{
   }
 });
 
+app.post('/admin', async (req, res) => {
+  try {
+    const { id_admin, nombre, email, id_usuario, contrasena, rol } = req.body;
+    const adminData = { id_admin, nombre, email, id_usuario, contrasena, rol };
+
+    const Admin = mongoose.model('Admin', adminSchema);
+    const admin = new Admin(adminData);
+    await admin.save();
+
+    return res.status(201).json(admin);
+  } catch (error) {
+    console.error('Error', error);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
